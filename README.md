@@ -16,19 +16,20 @@ To demonstrate the precedence and placeholder issues with the properties, six pr
 | 5 | custom `PropertySource` (like config-server, see `com.smalik.config.MyEnvironment` class) | `A,B,C,D` | `custom` |
 | 6 | Placeholder mechanism (see `some.properties`) | `A,B,C,D,E` | `file` |
  
+## Running the app
 
 There are two ways of running the WAR in tomcat (pick one):
 
-## 1. Using `<context:property-placeholder ...` bean
+### 1. Using `<context:property-placeholder ...` bean
 
-### JVM `-D` switches
+#### JVM `-D` switches
 
 | Parameter | value |
 | ------- | ----- |
 | `message.a` | `system` | 
 | `message.b` | `system` | 
 
-### Environment Variables
+#### Environment Variables
 
 | Variable | value |
 | ------- | ----- |
@@ -36,9 +37,9 @@ There are two ways of running the WAR in tomcat (pick one):
 | `MESSAGE_B` | `env` | 
 | `MESSAGE_C` | `env` | 
 
-## 2. Using `PropertyPlaceholderConfigurer` bean explicitly
+### 2. Using `PropertyPlaceholderConfigurer` bean explicitly
 
-### JVM `-D` switches
+#### JVM `-D` switches
 
 | Parameter | value |
 | ------- | ----- |
@@ -46,7 +47,7 @@ There are two ways of running the WAR in tomcat (pick one):
 | `message.b` | `system` | 
 | `spring.profiles.active` | `old` | 
 
-### Environment Variables
+#### Environment Variables
 
 | Variable | value |
 | ------- | ----- |
