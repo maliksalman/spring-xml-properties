@@ -6,23 +6,34 @@
    http://www.springframework.org/schema/context
    http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:some.properties" />
-<!--    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-<!--        <property name="systemPropertiesMode" value="2" />-->
-<!--        <property name="locations">-->
-<!--            <list value-type="org.springframework.core.io.Resource">-->
-<!--                <value>classpath:some.properties</value>-->
-<!--            </list>-->
-<!--        </property>-->
-<!--    </bean>-->
+    <beans profile="!old">
+        <!-- this placeholder will first look at configured spring Environment/PropertySource(s)
+             before looking at values of "some.properties" -->
+        <context:property-placeholder location="classpath:some.properties" />
+    </beans>
 
-    <bean id="myBean" class="com.smalik.config.MyBean">
-        <property name="messageA" value="${message.a:xml-default}" />
-        <property name="messageB" value="${message.b:xml-default}" />
-        <property name="messageC" value="${message.c:xml-default}" />
-        <property name="messageD" value="${message.d:xml-default}" />
-        <property name="messageE" value="${message.e:xml-default}" />
-        <property name="messageF" value="${message.f:xml-default}" />
-    </bean>
+    <beans profile="old">
+        <!-- this placeholder will ONLY look java system properties
+             before looking at values of "some.properties" -->
+        <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+            <property name="systemPropertiesMode" value="2" />
+            <property name="locations">
+                <list value-type="org.springframework.core.io.Resource">
+                    <value>classpath:some.properties</value>
+                </list>
+            </property>
+        </bean>
+    </beans>
+
+    <beans>
+        <bean id="myBean" class="com.smalik.config.MyBean">
+            <property name="messageA" value="${message.a:xml-default}" />
+            <property name="messageB" value="${message.b:xml-default}" />
+            <property name="messageC" value="${message.c:xml-default}" />
+            <property name="messageD" value="${message.d:xml-default}" />
+            <property name="messageE" value="${message.e:xml-default}" />
+            <property name="messageF" value="${message.f:xml-default}" />
+        </bean>
+    </beans>
 
 </beans>

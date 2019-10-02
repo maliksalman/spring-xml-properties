@@ -1,4 +1,4 @@
--- servet config
+-- servlet config
 
 ++ servlet context
    A
