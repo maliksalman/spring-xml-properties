@@ -1,0 +1,18 @@
+-- servet config
+
+++ servlet context
+   A
+
+-- jndi
+
+++ system properties
+   A,B
+
+++ environment vars
+   A,B,C
+
+++ custom <-- (C.S)
+   A,B,C,D
+
+++ some.properties
+   A,B,C,D,E
