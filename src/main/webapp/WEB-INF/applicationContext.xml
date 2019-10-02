@@ -1,0 +1,28 @@
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:context = "http://www.springframework.org/schema/context"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:some.properties" />
+<!--    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+<!--        <property name="systemPropertiesMode" value="2" />-->
+<!--        <property name="locations">-->
+<!--            <list value-type="org.springframework.core.io.Resource">-->
+<!--                <value>classpath:some.properties</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+    <bean id="myBean" class="com.smalik.config.MyBean">
+        <property name="messageA" value="${message.a:xml-default}" />
+        <property name="messageB" value="${message.b:xml-default}" />
+        <property name="messageC" value="${message.c:xml-default}" />
+        <property name="messageD" value="${message.d:xml-default}" />
+        <property name="messageE" value="${message.e:xml-default}" />
+        <property name="messageF" value="${message.f:xml-default}" />
+    </bean>
+
+</beans>
